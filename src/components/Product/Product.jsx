@@ -11,6 +11,7 @@ function Product(props) {
       <Container>
         <Box sx={{ width: "100%", my: 2 }}>
           <Grid
+            align="center"
             container
             columns={{ xs: 2, sm: 6, md: 10 }}
             rowSpacing={1}

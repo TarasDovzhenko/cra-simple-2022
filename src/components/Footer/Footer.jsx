@@ -19,8 +19,13 @@ function Footer(props) {
 
   return (
     <footer>
-      <Typography variant="subtitle1" align="center" gutterBottom>
-        Palazzo
+      <Typography
+        variant="subtitle1"
+        align="center"
+        color="primary"
+        gutterBottom
+      >
+        Information about us
       </Typography>
       <BottomNavigation value={value} onChange={handleChange}>
         <BottomNavigationAction
