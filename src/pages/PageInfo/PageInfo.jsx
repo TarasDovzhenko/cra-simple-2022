@@ -1,18 +1,16 @@
 import React from "react";
 
 import Header from "../../components/Header/Header";
-import Product from "../../components/Product/Product";
-import Footer from "../../components/Footer/Footer";
-import Filters from "../../components/Filters/Filters";
 
-function Home(props) {
+import Footer from "../../components/Footer/Footer";
+import Info from "../../components/Info/Info";
+
+export default function PageInfo() {
   return (
     <>
       <Header />
-      <Product />
+      <Info />
       <Footer />
     </>
   );
 }
-
-export default Home;

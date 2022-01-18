@@ -10,6 +10,11 @@ import { styled, alpha } from "@mui/material/styles";
 import FilterNoneIcon from "@mui/icons-material/FilterNone";
 
 import SearchIcon from "@mui/icons-material/Search";
+import { Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Button } from "@mui/material";
+import HelpIcon from "@mui/icons-material/Help";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -54,6 +59,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 function Header(props) {
+  let navigateFilter = useNavigate();
+  let navigateHome = useNavigate();
+  let location = useLocation();
+
   return (
     <header>
       <AppBar
@@ -62,10 +71,19 @@ function Header(props) {
         sx={{ maxWidth: 1440, mx: "auto", borderRadius: 2 }}
       >
         <Toolbar>
-          <Typography variant="h5" component="span" sx={{ flexGrow: 1, mx: 1 }}>
-            Palazzo
+          <Typography
+            variant="h5"
+            component="span"
+            sx={{ flexGrow: 1, mx: 0 }}
+            onClick={() => {
+              navigateHome("/");
+            }}
+          >
+            <Button sx={{ fontSize: 19 }} color="inherit">
+              Palazzo
+            </Button>
           </Typography>
-          <Search sx={{ mx: 2 }}>
+          <Search sx={{ mx: 1 }}>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -75,10 +93,19 @@ function Header(props) {
             />
           </Search>
 
-          <IconButton color="inherit" sx={{ mr: 1 }}>
-            <FilterNoneIcon />
+          <IconButton
+            onClick={() => {
+              location.pathname === "/"
+                ? navigateFilter("/info")
+                : navigateFilter("/");
+            }}
+            color="inherit"
+            sx={{ mr: 0.5 }}
+          >
+            <HelpOutlineIcon sx={{ fontSize: 28 }} />
           </IconButton>
-          <IconButton color="inherit" sx={{ mr: 1 }}>
+
+          <IconButton color="inherit" sx={{ mr: 0.5 }}>
             <ShoppingCartIcon />
           </IconButton>
         </Toolbar>
