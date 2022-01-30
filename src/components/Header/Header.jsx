@@ -15,6 +15,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@mui/material";
 import HelpIcon from "@mui/icons-material/Help";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -83,15 +84,12 @@ function Header(props) {
               Palazzo
             </Button>
           </Typography>
-          <Search sx={{ mx: 1 }}>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
+          <Button sx={{ fontSize: 14 }} color="inherit">
+            Catalog
+          </Button>
+          <IconButton color="inherit" sx={{ mr: 0.5 }}>
+            <LocalShippingIcon />
+          </IconButton>
 
           <IconButton
             onClick={() => {

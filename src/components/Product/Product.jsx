@@ -16,7 +16,7 @@ function Product(props) {
             container
             columns={{ xs: 2, sm: 6, md: 10 }}
             rowSpacing={1}
-            columnSpacing={{ xs: 2, sm: 4, md: 6 }}
+            columnSpacing={{ xs: 2, sm: 4, md: 10 }}
           >
             <Grid item xs={2}>
               <Filters />

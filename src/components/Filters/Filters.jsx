@@ -2,65 +2,79 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import { Container, Typography } from "@mui/material";
-
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-
+import TextField from "@mui/material/TextField";
 import FormGroup from "@mui/material/FormGroup";
-// import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
 
-function valuetext(value) {
-  return `${value}°C`;
-}
+// function valuetext(value) {
+//   return `${value}°C`;
+// }
 
 export default function Filters() {
-  const [value, setValue] = React.useState([20, 37]);
+  const [valuePrice, setValuePrice] = React.useState([20, 37]);
+  const [valueRating, setValueRating] = React.useState([20, 50]);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const handleChangePrice = (event, newValue) => {
+    setValuePrice(newValue);
   };
+
+  const handleChangeRating = (event, newValue) => {
+    setValueRating(newValue);
+  };
+
   return (
     <>
       <Container>
-        <Box sx={{ width: 195, my: 2 }}>
-          <Typography>Price</Typography>
+        <Box
+          align="left"
+          component="form"
+          sx={{
+            "& > :not(style)": { width: "19ch" },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <TextField id="standard-basic" label="Search" variant="standard" />
+        </Box>
+
+        <Box sx={{ width: 152 }}>
+          <Typography sx={{ mt: 1 }} align="left" id="input-price">
+            Price
+          </Typography>
           <Slider
-            getAriaLabel={() => "Temperature range"}
-            value={value}
-            onChange={handleChange}
+            getAriaLabel={() => "Price"}
+            value={valuePrice}
+            onChange={handleChangePrice}
             valueLabelDisplay="auto"
-            getAriaValueText={valuetext}
-            max={1100}
+            // getAriaValueText={valuetext}
+            id="input-price"
           />
         </Box>
-        <FormControl>
-          <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
-          <RadioGroup
-            sx={{ flexDirection: "row" }}
-            aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue="female"
-            name="radio-buttons-group"
-          >
-            <FormControlLabel
-              value="female"
-              control={<Radio />}
-              label="Female"
-            />
-            <FormControlLabel value="male" control={<Radio />} label="Male" />
-            <FormControlLabel value="all" control={<Radio />} label="All" />
-          </RadioGroup>
-        </FormControl>
+        <Box sx={{ width: 152 }}>
+          <Typography align="left" id="input-rating">
+            Rating
+          </Typography>
+          <Slider
+            getAriaLabel={() => "Rating"}
+            value={valueRating}
+            onChange={handleChangeRating}
+            valueLabelDisplay="auto"
+            // getAriaValueText={valuetext}
+            id="input-rating"
+          />
+        </Box>
         <FormGroup>
           <FormControlLabel
-            control={<Checkbox defaultChecked />}
-            label="Outerwear"
+            control={<Switch defaultChecked />}
+            label="Novelty"
           />
-          <FormControlLabel control={<Checkbox />} label="Shoes" />
-          <FormControlLabel control={<Checkbox />} label="Pants" />
+        </FormGroup>
+        <FormGroup>
+          <FormControlLabel control={<Switch defaultChecked />} label="Sale" />
+        </FormGroup>
+        <FormGroup>
+          <FormControlLabel control={<Switch defaultChecked />} label="Stock" />
         </FormGroup>
       </Container>
     </>
