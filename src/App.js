@@ -5,6 +5,8 @@ import Info from "./components/Info/Info";
 import PageInfo from "./pages/PageInfo/PageInfo";
 import Catalog from "./pages/Catalog/Catalog";
 
+import DeliveryPayment from "./pages/DeliveryPayment/DeliveryPayment";
+
 export function App() {
   return (
     <div className="app">
@@ -12,6 +14,7 @@ export function App() {
         <Route path="/info" element={<PageInfo />} />
         <Route path="/" element={<Home />} />
         <Route path="/catalog" element={<Catalog />} />
+        <Route path="/delivery" element={<DeliveryPayment />} />
       </Routes>
     </div>
   );

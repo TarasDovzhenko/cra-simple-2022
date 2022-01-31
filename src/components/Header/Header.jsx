@@ -15,6 +15,17 @@ import { Button } from "@mui/material";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 
+import Badge from "@mui/material/Badge";
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: "0 4px",
+  },
+}));
+
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -60,6 +71,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 function Header(props) {
   let navigateInfo = useNavigate();
   let navigateHome = useNavigate();
+  let navigateDelivery = useNavigate();
   let navigateCatalog = useNavigate();
   let location = useLocation();
 
@@ -89,12 +101,20 @@ function Header(props) {
                 ? navigateCatalog("/Catalog")
                 : navigateCatalog("/");
             }}
-            sx={{ fontSize: 14 }}
+            sx={{ fontSize: 14, mr: 0.5 }}
             color="inherit"
           >
             Catalog
           </Button>
-          <IconButton color="inherit" sx={{ mr: 0.5 }}>
+          <IconButton
+            onClick={() => {
+              location.pathname === "/"
+                ? navigateDelivery("/delivery")
+                : navigateDelivery("/");
+            }}
+            color="inherit"
+            sx={{ mr: 0.5 }}
+          >
             <LocalShippingIcon />
           </IconButton>
 
@@ -105,13 +125,14 @@ function Header(props) {
                 : navigateInfo("/");
             }}
             color="inherit"
-            sx={{ mr: 0.5 }}
           >
             <HelpOutlineIcon sx={{ fontSize: 28 }} />
           </IconButton>
 
-          <IconButton color="inherit" sx={{ mr: 0.5 }}>
-            <ShoppingCartIcon />
+          <IconButton aria-label="cart">
+            <StyledBadge sx={{ mr: 0.5 }} badgeContent={2} color="primary">
+              <ShoppingCartIcon sx={{ color: "#fff" }} />
+            </StyledBadge>
           </IconButton>
         </Toolbar>
       </AppBar>

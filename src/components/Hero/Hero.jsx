@@ -17,7 +17,7 @@ function Hero(props) {
           }}
           alt="Palazzo shop."
           src="https://api.djomi.uz/storage/uploads/posts/images/21127/main_page/HZPgUBzOmi.jpg"
-        />{" "}
+        />
         <Typography align="center" my={2} component="p" variant="h5">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias
           dicta asperiores ipsa error nihil placeat deserunt hic. Odio facere
