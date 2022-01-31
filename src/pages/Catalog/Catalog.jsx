@@ -1,19 +1,19 @@
 import React from "react";
 
 import Header from "../../components/Header/Header";
-import Product from "../../components/Product/Product";
+
 import Footer from "../../components/Footer/Footer";
 import Filters from "../../components/Filters/Filters";
-import Hero from "../../components/Hero/Hero";
+import Product from "../../components/Product/Product";
 
-function Home(props) {
+function Catalog(props) {
   return (
     <>
       <Header />
-      <Hero />
+      <Product />
       <Footer />
     </>
   );
 }
 
-export default Home;
+export default Catalog;

@@ -7,13 +7,11 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 import InputBase from "@mui/material/InputBase";
 import { styled, alpha } from "@mui/material/styles";
-import FilterNoneIcon from "@mui/icons-material/FilterNone";
 
-import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@mui/material";
-import HelpIcon from "@mui/icons-material/Help";
+
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 
@@ -60,8 +58,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 function Header(props) {
-  let navigateFilter = useNavigate();
+  let navigateInfo = useNavigate();
   let navigateHome = useNavigate();
+  let navigateCatalog = useNavigate();
   let location = useLocation();
 
   return (
@@ -84,7 +83,15 @@ function Header(props) {
               Palazzo
             </Button>
           </Typography>
-          <Button sx={{ fontSize: 14 }} color="inherit">
+          <Button
+            onClick={() => {
+              location.pathname === "/"
+                ? navigateCatalog("/Catalog")
+                : navigateCatalog("/");
+            }}
+            sx={{ fontSize: 14 }}
+            color="inherit"
+          >
             Catalog
           </Button>
           <IconButton color="inherit" sx={{ mr: 0.5 }}>
@@ -94,8 +101,8 @@ function Header(props) {
           <IconButton
             onClick={() => {
               location.pathname === "/"
-                ? navigateFilter("/info")
-                : navigateFilter("/");
+                ? navigateInfo("/info")
+                : navigateInfo("/");
             }}
             color="inherit"
             sx={{ mr: 0.5 }}

@@ -49,6 +49,7 @@ export default function Filters() {
             valueLabelDisplay="auto"
             // getAriaValueText={valuetext}
             id="input-price"
+            max={1000}
           />
         </Box>
         <Box sx={{ width: 152 }}>
